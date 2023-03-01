@@ -19,6 +19,7 @@ export class AppComponent {
   faCircleCheck = faCircleCheck;
   faAward = faAward;
 
+
   icon = 'https://static.platzi.com/media/achievements/badge-angular-componentes-servicios-75f68ec3-48e0-430e-b7e2-889fad0d1984.png';
 
   isOpen = false;
@@ -39,12 +40,12 @@ export class AppComponent {
         {
           icon: this.icon,
           title: 'Curso de Álgebra',
-          status: 'Curso Aprobado'
+          status: 'Completado'
         },
         {
           icon: this.icon,
           title: 'Curso de Excel para el Análisis de Datos',
-          status: 'Curso Aprobado'
+          status: 'Completado'
         },
         {
           icon: this.icon,
@@ -54,12 +55,12 @@ export class AppComponent {
         {
           icon: this.icon,
           title: 'Curso de Fundamentos de Matemáticas',
-          status: 'Curso Aprobado'
+          status: 'Completado'
         },
         {
           icon: this.icon,
           title: 'Curso de Álgebra',
-          status: 'Curso Aprobado'
+          status: 'Completado'
         },
         {
           icon: this.icon,
@@ -152,7 +153,7 @@ export class AppComponent {
 
 
   drop(event: CdkDragDrop<Ruta[]>) {
-      moveItemInArray(this.rutas, event.previousIndex, event.currentIndex)
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex)
   }
 
   help(){
@@ -176,6 +177,24 @@ export class AppComponent {
       this.rutas.splice(itemRuta, 1)
 
     })
+  }
+
+  nuevaRuta: Ruta = {
+    id: this.rutas.length + 1,
+    path: 'RUTA',
+    title: 'Nueva Ruta',
+    cursos: [
+      {
+        icon: this.icon,
+        title: 'Curso de Fundamentos de Matemáticas',
+        status: '70% Completado'
+      },
+    ]
+  }
+
+  newRuta() {
+    this.rutas.push(this.nuevaRuta)
+    console.log(this.rutas)
   }
 
 

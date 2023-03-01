@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Inject, Output } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
 import { Curso, Ruta } from 'src/app/models/ruta.model';
-import { faAward, faCircleCheck, faGraduationCap, faL } from '@fortawesome/free-solid-svg-icons';
+import { faAward, faCircleCheck, faGraduationCap, faEyeSlash, faEye, faCircleMinus } from '@fortawesome/free-solid-svg-icons';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 
 
@@ -25,8 +26,17 @@ export class CursosComponent {
   faAward = faAward;
   faGraduationCap = faGraduationCap;
 
+  faEye = faEye;
+  faEyeSlash = faEyeSlash;
+  faCircleMinus = faCircleMinus;
+
   cursos: Curso[];
   ruta: Ruta;
+
+  isOpen = false;
+  eyeShow = true;
+  eyeSlash = 'Mostrar todo';
+  eye = 'Ocultar completados';
 
 
   constructor(
@@ -36,6 +46,10 @@ export class CursosComponent {
     this.ruta = data.ruta;
     this.cursos = data.cursos;
   }
+
+  drop(event: CdkDragDrop<Curso[]>) {
+    moveItemInArray(event.container.data, event.previousIndex, event.currentIndex)
+}
 
   close() {
     this.dialogRef.close({
@@ -59,6 +73,14 @@ export class CursosComponent {
       this.completados = [];
     }
     console.log(this.completados)
+  }
+
+  show() {
+    this.isOpen = !this.isOpen
+  }
+
+  eyes() {
+    this.eyeShow = !this.eyeShow;
   }
 
 }

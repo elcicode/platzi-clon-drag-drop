@@ -20,34 +20,37 @@
       Listas de cursos para adquirir una habilidad o formarte en un rol. Puedes agregar una ruta ya creada desde las escuelas o crear una propia.
     </h1>
     </ng-template>
-    <div class="flex flex-wrap gap-2 example-boundary"
+    <div
+      class="flex flex-wrap gap-2 example-boundary"
       cdkDropList
       [cdkDropListData]="rutas"
-      (cdkDropListDropped)="drop($event)">
+      (cdkDropListDropped)="drop($event)"
+      >
 
       <div
       *ngFor="let ruta of rutas"
       >
 
-        <div
-        cdkDrag
-        [cdkDragData]="ruta"
-        cdkDragBoundary=".example-boundary"
-        class="hover:bg-[#40587c] w-80 bg-[#24385b] p-4 rounded-lg border border-[#40587c] m-2 h-24 cursor-grab active:cursor-grabbing will-change-transform"
+      <div
+      cdkDrag
+      [cdkDragData]="ruta"
+      cdkDragBoundary=".example-boundary"
+      class="hover:bg-[#40587c] w-80 bg-[#24385b] p-4 rounded-lg border border-[#40587c] m-2 h-24 cursor-grab active:cursor-grabbing will-change-transform"
 
-        >
-        <div
-        (click)="openRuta(ruta, ruta.cursos)"
-          class="flex flex-col gap-1"
-          >
-          <h1 class="text-[#83d988] text-ellipsis text-xs">{{ ruta.path }}</h1>
-          <h1 class="text-white text-ellipsis">{{ ruta.title }}</h1>
-          <p class="text-gray-400 text-xs">
-            <fa-icon class="mr-4" [icon]="faCircleCheck"></fa-icon>
-            <fa-icon class="mr-2" [icon]="faAward"></fa-icon>
-            70% completada
-          </p>
-          </div>
+      >
+
+      <div
+      (click)="openRuta(ruta, ruta.cursos)"
+      class="flex flex-col gap-1"
+      >
+        <h1 class="text-[#83d988] text-ellipsis text-xs">{{ ruta.path }}</h1>
+        <h1 class="text-white text-ellipsis">{{ ruta.title }}</h1>
+        <p class="text-gray-400 text-xs">
+          <fa-icon class="mr-4" [icon]="faCircleCheck"></fa-icon>
+          <fa-icon class="mr-2" [icon]="faAward"></fa-icon>
+          70% completada
+        </p>
+      </div>
         </div>
 
       </div>
@@ -64,7 +67,7 @@
           </p>
         </div>
       </div>
-      <div class="hover:bg-[#40587c] w-80 bg-transparent p-4 rounded-lg border border-[#33b1ff] border-dashed m-2 h-24 flex flex-col items-center justify-items-center place-content-center cursor-pointer active:cursor-not-allowed">
+      <div class="hover:bg-[#40587c] w-80 bg-transparent p-4 rounded-lg border border-[#33b1ff] border-dashed m-2 h-24 flex flex-col items-center justify-items-center place-content-center cursor-pointer active:cursor-not-allowed" (click)="newRuta()">
         <h1 class="text-[#33b1ff]">Crear nueva Ruta</h1>
       </div>
     </div>

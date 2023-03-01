@@ -1,6 +1,6 @@
 <div class="bg-[#24385b] rounded-[15px] overflow-y-scroll max-h-[500px] scrollbar">
-  <div class="sm:w-[760px] shadow">
-      <div class="bg-[#121f3d] text-white text-xl p-12 w-full flex space-x-72">
+  <div class=" shadow">
+      <div class="bg-[#121f3d] text-white text-xl p-12 w-full flex space-x-36">
         <div>
           <h1>{{ ruta.title }}</h1>
           <p class="text-gray-400 text-xs mt-4 relative w-full">
@@ -8,25 +8,60 @@
             <fa-icon class="mr-2" [icon]="faAward"></fa-icon>
             70% completada
           </p>
-          <button class="px-4 h-12 bg-[#24385b] text-[#31a8f5] rounded" (click)=" hiddenCursos()">Ocultar cursos aprobados</button>
         </div>
-        <button class="px-4 h-12 bg-[#24385b] text-[#31a8f5] rounded" (click)=" idRuta(ruta.id)">...</button>
+          <button class="px-4 h-12 bg-[#24385b] text-[#31a8f5] rounded"
+          (click)="show()"
+          cdkOverlayOrigin
+          #trigger="cdkOverlayOrigin"
+          >...</button>
+          <ng-template
+          cdkConnectedOverlay
+          [cdkConnectedOverlayOrigin]="trigger"
+          [cdkConnectedOverlayOpen]="isOpen"
+          (overlayOutsideClick)="show()"
+          >
+
+          <div class="flex flex-col justify-items-center py-6 w-64 h-full bg-[#24385b] text-white text-sm rounded-lg mr-auto my-2"
+          >
+            <button (click)="idRuta(ruta.id)" class="text-start w-full h-10 hover:bg-[#40587c]"><fa-icon class="px-4" [icon]="faCircleMinus"></fa-icon>Abandonar Ruta</button>
+            <button (click)="hiddenCursos()"  (click)="eyes()" class="text-start w-full h-10 hover:bg-[#40587c]" *ngIf="eyeShow; else elseEye"><fa-icon class="px-4" [icon]="faEyeSlash"></fa-icon>
+              {{ eye }}
+            </button>
+            <ng-template #elseEye>
+              <button (click)="hiddenCursos()"  (click)="eyes()" class="text-start w-full h-10 hover:bg-[#40587c]"><fa-icon class="px-4" [icon]="faEye"></fa-icon>
+              {{ eyeSlash }}
+            </button></ng-template>
+          </div>
+
+          </ng-template>
       </div>
 
-      <div class=" rounded-b-lg">
+      <div class=" rounded-b-lg example-boundary"
+      cdkDropList
+      [cdkDropListData]="cursos"
+      (cdkDropListDropped)="drop($event)"
+      >
         <div *ngIf="!hidden; else complete">
           <div
-            *ngFor="let item of cursos"
-            class=" cursor-pointer "
+            *ngFor="let curso of cursos"
+            class="cursor-pointer"
             >
-            <div class=" w-full h-16 hover:bg-[#40587c] pl-8">
+            <div class=" w-full h-16 bg-[#24385b] hover:bg-[#40587c] pl-8"
+            cdkDrag
+            cdkDragBoundary=".example-boundary"
+            [cdkDragData]="curso"
+            >
                 <div class="flex flex-wrap gap-2 h-20 content-center">
                   <div class="w-8">
-                    <img [src]="item.icon" width="100%" alt="">
+                    <img [src]="curso.icon" width="100%" alt="">
                   </div>
                   <div class="text-white border-none">
-                    <a>{{ item.title }}</a>
-                    <p class="text-xs text-gray-400">{{ item.status }}<p>
+                    <a>{{ curso.title }}</a>
+                    <p class="text-xs text-gray-400"
+                      [style.color]="curso.status === 'Completado' ? '#98ca3f' : 'text-gray-400'"
+                    >
+                      {{ curso.status }}
+                    <p>
                     </div>
                   </div>
             </div>
@@ -35,17 +70,18 @@
 
         <ng-template #complete>
           <div
-          *ngFor="let item of completados"
+          *ngFor="let curso of completados"
           class=" cursor-pointer "
           >
-          <div class=" w-full h-16 hover:bg-[#40587c] pl-8">
+          <div class=" w-full h-16 hover:bg-[#40587c] pl-8 cursor-pointer active:cursor-not-allowed"
+          >
               <div class="flex flex-wrap gap-2 h-20 content-center">
                 <div class="w-8">
-                  <img [src]="item.icon" width="100%" alt="">
+                  <img [src]="curso.icon" width="100%" alt="">
                 </div>
                 <div class="text-white border-none">
-                  <a>{{ item.title }}</a>
-                  <p class="text-xs text-gray-400">{{ item.status }}<p>
+                  <a>{{ curso.title }}</a>
+                  <p class="text-xs text-gray-400" >{{ curso.status }}<p>
                   </div>
                 </div>
           </div>

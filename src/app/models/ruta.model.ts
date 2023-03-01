@@ -8,5 +8,5 @@ export interface Ruta {
 export interface Curso {
   icon: string;
   title: string;
-  status: 'Curso Aprobado' | '70% Completado';
+  status: 'Completado' | '70% Completado';
 }
