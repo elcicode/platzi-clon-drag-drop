@@ -1,5 +1,5 @@
-<div class="bg-[#121f3d] min-h-screen flex items-start justify-items-center">
-  <div class="p-20 w-full flex flex-col ">
+<div class="bg-[#121f3d] flex flex-col items-start justify-items-center min-h-screen">
+  <div class="bg-[#121f3d] p-20 w-full flex flex-col">
     <h1 class="text-2xl text-white mb-8 ml-2">
       Mis Rutas
       <fa-icon
@@ -35,7 +35,7 @@
       cdkDrag
       [cdkDragData]="ruta"
       cdkDragBoundary=".example-boundary"
-      class="hover:bg-[#40587c] w-80 bg-[#24385b] p-4 rounded-lg border border-[#40587c] m-2 h-24 cursor-grab active:cursor-grabbing will-change-transform"
+      class="hover:bg-[#40587c] w-60 h-32 bg-[#24385b] p-4 rounded-lg border border-[#40587c] m-2  cursor-grab active:cursor-grabbing will-change-transform"
 
       >
 
@@ -43,12 +43,12 @@
       (click)="openRuta(ruta, ruta.cursos)"
       class="flex flex-col gap-1"
       >
-        <h1 class="text-[#83d988] text-ellipsis text-xs">{{ ruta.path }}</h1>
-        <h1 class="text-white text-ellipsis">{{ ruta.title }}</h1>
+        <h1 class="text-[#83d988] text-ellipsis text-xs" >{{ ruta.path }}</h1>
+        <h1 class="text-white text-ellipsis" [style.color]="ruta.title === 'Nueva Ruta' ? '#FF5566':'text-white'">{{ ruta.title }}</h1>
         <p class="text-gray-400 text-xs">
           <fa-icon class="mr-4" [icon]="faCircleCheck"></fa-icon>
           <fa-icon class="mr-2" [icon]="faAward"></fa-icon>
-          70% completada
+          {{ ruta.status }}
         </p>
       </div>
         </div>
@@ -56,21 +56,15 @@
       </div>
 
 
-      <div class="hover:bg-[#40587c] w-80 bg-[#24385b] p-4 rounded-lg border border-[#40587c] m-2 h-24 cursor-pointer active:cursor-not-allowed">
-        <div class="flex flex-col gap-1">
-          <h1 class="text-[#83d988] text-ellipsis text-xs">RUTA PERSONALIZADA</h1>
-          <h1 class="text-white text-ellipsis">Mis cursos</h1>
-          <p class="text-gray-400 text-xs">
-            <fa-icon class="mr-4" [icon]="faCircleCheck"></fa-icon>
-            <fa-icon class="mr-2" [icon]="faAward"></fa-icon>
-            70% completada
-          </p>
-        </div>
-      </div>
-      <div class="hover:bg-[#40587c] w-80 bg-transparent p-4 rounded-lg border border-[#33b1ff] border-dashed m-2 h-24 flex flex-col items-center justify-items-center place-content-center cursor-pointer active:cursor-not-allowed" (click)="newRuta()">
+      <div class="hover:bg-[#40587c] w-60 h-32 bg-transparent p-4 rounded-lg border border-[#33b1ff] border-dashed m-2 flex flex-col items-center justify-items-center place-content-center cursor-pointer active:cursor-not-allowed" (click)="newRuta()">
         <h1 class="text-[#33b1ff]">Crear nueva Ruta</h1>
       </div>
     </div>
   </div>
+  <div class="bg-[#121f3d] flex flex-col pb-8 pl-24 text-white mt-[20vh] justify-start gap-2">
+    <p class="hover:animate-pulse"><fa-icon class="mr-2" [icon]="faLink"></fa-icon><a href="https://www.linkedin.com/in/elcicode/" target="_blank">Linkedin</a></p>
+    <p class="hover:animate-pulse"><fa-icon class="mr-2" [icon]="faLink"></fa-icon><a href="https://github.com/elcicode/platzi-clon-drag-drop/blob/main/README.md" target="_blank">Github</a></p>
+    <p class="hover:animate-pulse"><fa-icon class="mr-2" [icon]="faLink"></fa-icon><a href="https://drive.google.com/file/d/1HIoTmtbq9hZXPegyx0hWF_ZqwQ-ANV7U/view?usp=share_link" target="_blank">Video Demo</a></p>
+    <p class="my-5 font-mono text-[#33b1ff]">With <fa-icon [icon]="faHeart"></fa-icon> by Elcira Ibarra</p>
+  </div>
 </div>
-

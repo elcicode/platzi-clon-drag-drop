@@ -68,7 +68,7 @@ export class CursosComponent {
   hiddenCursos() {
     this.hidden = !this.hidden;
     if (this.hidden === true) {
-      this.completados = this.cursos.filter(item => item.status === '70% Completado');
+      this.completados = this.cursos.filter(item => item.status === '0% completa');
     } else {
       this.completados = [];
     }

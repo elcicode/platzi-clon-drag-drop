@@ -1,4 +1,17 @@
-# PlatziClonDragDrop
+# Clon Platzi Rutas Draggable
+
+###### Este proyecto consiste en un clon de la sección de rutas de la plataforma educativa Platzi, con la implementación de funcionalidades de arrastrar y soltar (drag and drop) gracias a las herramientas Angular CDK, y otras interactividades como overlay y dialog. Además, se han utilizado los estilos de Tailwind CSS para darle una apariencia moderna y atractiva.
+###### Con esta implementación, se puede reordenar fácilmente las rutas y los cursos a través del arrastre de los elementos. Esto proporciona una mejor experiencia de usuario y una mayor interactividad con la plataforma.
+<div style="background-color:#08e889; color: black; padding:10px; text-align: center; font-size: 25px">[Deploy](http://localhost:4200/ "Deploy")</div>
+
+------------
+
+![Captura de pantalla principal del proyecto Clon Platzi Rutas Dragabble. En esta imagen se puede ver la interfaz de usuario de la aplicación, que permite arrastrar y soltar elementos para reorganizar las rutas y los cursos en la plataforma de Platzi.
+](https://drive.google.com/uc?id=1iWeMX5jcFbQftvGeckTBskVb5hBMXakV)
+
+------------
+
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.1.
 
