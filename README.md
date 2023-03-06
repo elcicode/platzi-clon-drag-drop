@@ -3,7 +3,7 @@
 ###### Este proyecto consiste en un clon de la sección de rutas de la plataforma educativa Platzi, con la implementación de funcionalidades de arrastrar y soltar (drag and drop) gracias a las herramientas Angular CDK, y otras interactividades como overlay y dialog. Además, se han utilizado los estilos de Tailwind CSS para darle una apariencia moderna y atractiva.
 ###### Con esta implementación, se puede reordenar fácilmente las rutas y los cursos a través del arrastre de los elementos. Esto proporciona una mejor experiencia de usuario y una mayor interactividad con la plataforma.
 
-Deploy: [platzi-clon-drag-drop.netlify.app](platzi-clon-drag-drop.netlify.app "Deploy: platzi-clon-drag-drop.netlify.app")
+Deploy: [platzi-clon-drag-drop.netlify.app](https://platzi-clon-drag-drop.netlify.app/)
 ------------
 
 ![Captura de pantalla principal del proyecto Clon Platzi Rutas Dragabble. En esta imagen se puede ver la interfaz de usuario de la aplicación, que permite arrastrar y soltar elementos para reorganizar las rutas y los cursos en la plataforma de Platzi.
